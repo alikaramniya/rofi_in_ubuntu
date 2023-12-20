@@ -45,10 +45,50 @@ mv config.rasi ~/.config/rofi/
 bindsym $mod+d exec rofi -show drun
 ```
 
+## اضافه کردن emoji به rofi
+
 ### اگر بخوایم از emoji هایی که داریم توی ترمینالمون استفاده کنیم کافیه shortcut پایین رو به برنامه اضافه کنید و برین روی emoji مد نظرتون و enter رو بزنید که براتون کپی شه
 
 ```
 bindsym $mod+shift+e exec rofi -show emoji
 ```
 
-## هشدار زمانی که این shortcut رو اضافه میکنید یک shortcut با مین کامند وجود داره که میتونید اون رو به ی چیز دیگه تغییر بدین یا ی shortcut دیگه ای برای این emoji ها در نظر بگیرید
+#### هشدار زمانی که این shortcut رو اضافه میکنید یک shortcut با مین کامند وجود داره که میتونید اون رو به ی چیز دیگه تغییر بدین یا ی shortcut دیگه ای برای این emoji ها در نظر بگیرید
+
+## اضافه کردن ماشین حساب به rofi
+
+### اگر بخوایم توی اوبونتو calc رو اضافه کنیم باید اول از همه galc رو نصب کنیم با دستور پایین
+
+```
+sudo apt install galc
+```
+
+### بعد از نصب کردن اون میریم به ادرس پایین و calc رو نصب میکنیم فقط دقت داشته باشین که توی قدم آخر به جای اجرای دستور make دستور sudo make install را اجرا کنید
+
+[install-calc-for-rofi](https://github.com/svenstaro/rofi-calc?tab=readme-ov-file#from-source)
+
+```
+git clone https://github.com/svenstaro/rofi-calc.git
+cd rofi-calc/
+mkdir m4
+autoreconf -i
+mkdir build
+cd build/
+../configure
+sudo make install
+```
+
+### بعد از این کافیه برین به آدرس پایین و calc رو هم اضافه کنید به کانفیگ خودتون توی فایل config.rasi
+
+```
+configuration {
+    display-drun: "Applications:";
+    display-window: "Windows:";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font Medium 10";
+    modi: "window,run,drun,emoji,calc"; // این خط کد رو باید تغییر بدین فقط
+
+../
+```
+
+### بعد از انجام دادن این مراحل حالا میتونید که از ماشین حساب هم استفاده کنید کافیه با ctrl+shift بین تب های مختلف جابه جا بشین یا با زدن ctrl+shfit+tab برگردین عقب بین تب ها
